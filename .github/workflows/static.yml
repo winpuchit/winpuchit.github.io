@@ -34,12 +34,15 @@ jobs:
         with:
           node-version: "24.x" # Node version
           cache: "npm"
+          cache-dependency-path: ./githubio-project/package-lock.json # Path to lock file
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./githubio-project
 
       - name: Build
         run: npm run build
+        working-directory: ./githubio-project
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
